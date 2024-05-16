@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla App Template</title>
+    
+    <script type="module" crossorigin src="/vanilla-app-template/commonHelpers.js"></script>
+    <link rel="stylesheet" href="/vanilla-app-template/assets/index-62b62598.css">
+  </head>
+  <body>
+    <section class="search-section">
+      <div class="container">
+        <form class="search-form js-search-form" name="searchImageForm">
+          <div class="input-group mb-3">
+            <input
+              class="form-control js-search-input"
+              type="text"
+              name="searchKeyword"
+              placeholder="Search images..."
+            />
+            <button
+              class="btn btn-outline-success"
+              type="submit"
+              id="button-addon2"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <div class="container">
+        <div
+          class="gallery-list js-gallery row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"
+        ></div>
+        <span class="loader js-loader is-hidden"></span>
+      </div>
+    </section>
+
+    
+  </body>
+</html>
