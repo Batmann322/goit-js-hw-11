@@ -34,7 +34,7 @@
   transform: translate(-50%, -50%);
 }
 
-.is-hidden {
+.hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -64,4 +64,18 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.image-info {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+  font-style: italic;
 }
