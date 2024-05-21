@@ -5,15 +5,14 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const form = document.querySelector('#search-form');
+const loader = document.querySelector('#loader');
 const input = document.querySelector('#search-input');
 const gallery = document.querySelector('#gallery');
-const loader = document.querySelector('#loader');
-
-let lightbox;
+const form = document.querySelector('#search-form');
 
 form.addEventListener('submit', event => {
   event.preventDefault();
+  gallery.innerHTML = '';
   const query = input.value.trim();
   if (!query) {
     iziToast.warning({
@@ -27,26 +26,18 @@ form.addEventListener('submit', event => {
 
   loader.classList.remove('hidden');
 
+  const lightbox = new SimpleLightbox('.image-card a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+    overlay: true,
+    overlayOpacity: 0.7,
+  });
+
   fetchPhotosByQuery(query)
     .then(images => {
       loader.classList.add('hidden');
-
-      gallery.innerHTML = '';
-
       renderImages(images, gallery);
-
-      if (gallery.querySelectorAll('.image-card a').length > 0) {
-        lightbox = new SimpleLightbox('.image-card a', {});
-
-        if (event.target.nodeName !== 'IMG') return;
-        if (lightbox) {
-          lightbox.refresh();
-        } else {
-          console.error('Lightbox is not initialized.');
-        }
-      } else {
-        console.error('No images found for lightbox to handle.');
-      }
+      lightbox.refresh();
       input.value = '';
     })
     .catch(error => {
